@@ -1,15 +1,31 @@
 {
-  "manifest_version": 2,
-  "version": "0.0.1",
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "description": "Sample application showing how to create an extension with Create React App",
-  "browser_action": {
-    "default_title": "CRE",
+  "manifest_version": 3,
+  "name": "QuickLinks",
+  "author": "Bighnesh Sahoo",
+  "version": "1.0.0",
+
+  "description": "QuickLinks is a simple browser extension that enables you to quickly access your most used URLs.",
+
+  "icons": {
+    "48": "icons/QuickLinks logo.png",
+    "32": "icons/QuickLinks logo_32.png",
+    "16": "icons/QuickLinks logo_16.png"
+  },
+
+  "permissions": ["storage"],
+
+  "action": {
+    "default_icon": {
+      "16": "icons/QuickLinks logo_16.png",
+      "32": "icons/QuickLinks logo_32.png",
+      "48": "icons/QuickLinks logo.png"
+    },
+    "default_title": "QuickLinks",
     "default_popup": "popup.html"
   },
+
   "background": {
-    "scripts": ["background.bundle.js"]
+    "service_worker": "background.bundle.js"
   },
   "content_scripts": [
     {
@@ -17,12 +33,6 @@
       "js": ["contentScript.bundle.js"]
     }
   ],
-  "icons": {
-    "16": "img/icon-16.png",
-    "48": "img/icon-48.png",
-    "128": "img/icon-128.png"
-  },
-  "options_page": "options.html",
-  "permissions": ["activeTab"],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+
+  "options_page": "options.html"
 }
