@@ -47,8 +47,8 @@ function NewQuicklinkModal(props) {
                 <DropDown 
                     items="w-1/2 h-full bg-blue-400 p-1.5 rounded mt-6" 
                     current={workspace} 
-                    toChange={setWorkspace}>
-
+                    toChange={setWorkspace}
+                    options="w-full">
                 </DropDown>
                 <form className="m-4 mt-6" onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-y-4">

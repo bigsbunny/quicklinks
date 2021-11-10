@@ -17,7 +17,7 @@ function Options() {
       <h1 className="text-center text-3xl my-4">QuickLinks Configuration</h1>
       <div className="w-1/2 mx-auto flex flex-row justify-center items-start gap-x-2">
         <div className="w-3/4 flex-shrink-0 relative">
-          <DropDown className="z-10" items="w-full h-full bg-blue-400 p-2 rounded" current={current} toChange={setCurrent}></DropDown>
+          <DropDown className="z-10" items="w-full h-full bg-blue-400 p-2 rounded" current={current} toChange={setCurrent} options="w-full"></DropDown>
         </div>
         <div>
           <MainModal current={current} toChange={setCurrent}/>

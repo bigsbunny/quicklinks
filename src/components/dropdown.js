@@ -18,7 +18,7 @@ function DropDown(props) {
     return (
         <Listbox value={props.current} onChange={props.toChange}>
             <Listbox.Button className={props.items + ' text-white text-base'}>{props.current || "Choose Workspace"}</Listbox.Button>
-            <Listbox.Options className="absolute z-10 w-full bg-blue-50 rounded">
+            <Listbox.Options className={`${props.options} absolute z-10 bg-blue-50 rounded`}>
                 {workspaces.map((workspace) => (
                     <Listbox.Option
                         className={({active}) => 
