@@ -51,7 +51,7 @@ function Collection(props) {
                             <div className="mb-2.5">
                                 <Disclosure>
                                     <Disclosure.Button
-                                        className={({ open }) => `${open ? "rounded-t" : "rounded"} bg-gray-400 p-3 text-lg w-full`}>
+                                        className={({ open }) => `${open ? "rounded-t" : "rounded"} bg-gray-400 p-3 text-lg w-full truncate`}>
                                         {quicklink.quicklink_name}
                                     </Disclosure.Button>
                                     <Disclosure.Panel className="Collection-Panel-Item border-2 border-gray-400 rounded-b py-4 px-2">

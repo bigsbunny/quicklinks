@@ -43,7 +43,7 @@ function App() {
                 return (
                   <button
                     type="button"
-                    className="p-2 bg-blue-400 text-white rounded"
+                    className="p-2 bg-blue-400 text-white rounded truncate"
                     link={quicklink.quicklink_url}
                     onClick={(e) => openURLAsTab(e.target.attributes.link.value)}>{quicklink.quicklink_name}</button>
                 );
