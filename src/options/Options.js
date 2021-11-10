@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 import { initStorage, fetchWorkspace } from '../util/storage'
 
 function Options() {
-  initStorage();
+  
   const [current, setCurrent] = useState("")
 
   return (

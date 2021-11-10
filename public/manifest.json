@@ -12,7 +12,7 @@
     "16": "icons/QuickLinks logo_16.png"
   },
 
-  "permissions": ["storage", "tabs", "runtime"],
+  "permissions": ["storage", "tabs"],
 
   "action": {
     "default_icon": {

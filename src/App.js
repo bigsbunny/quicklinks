@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './img/logo.svg';
 import './App.css';
 
 import { useStateWithCallbackInstant } from 'use-state-with-callback';
 import DropDown from './components/dropdown';
 import { openOptionsPage } from './util/runtime';
-import { fetchWorkspaceQuicklinks } from './util/storage';
+import { initStorage, fetchWorkspaceQuicklinks } from './util/storage';
 import { openURLAsTab } from './util/tabs';
 
 function App() {
+
   const [current, setCurrent] = useState('');
   const [quicklinks, setQuicklinks] = useStateWithCallbackInstant([''], (quicklinks) => {
     if (current !== "") {

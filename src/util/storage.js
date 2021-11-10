@@ -7,6 +7,18 @@ const initStorage = () => {
     })
 };
 
+// const initStorage = async () => {
+//     let a = new Promise((resolve, reject) => {
+//         chrome.storage.sync.get(['workspaces'], (result) => {
+//             if(Object.keys(result).length === 0)
+//                 chrome.storage.sync.set({workspaces: []});
+//             resolve(true); 
+//         });
+//     })
+
+//     return await a;
+// }
+
 const workspaceCollection = (newWorkspace) => {
     chrome.storage.sync.get(['workspaces'], (obj) => {
         obj.workspaces.push(newWorkspace);

@@ -7,7 +7,7 @@ function Footer(props) {
             >
                 A project by <a href="https://github.com/bigsbunny"
                     target="_blank"
-                    className="underline" rel="noreferrer">Bighnesh Sahoo</a>
+                    className="underline" rel="noreferrer">bigsby</a> | © 2021 Bighnesh Sahoo
         </footer>
     )
 }
