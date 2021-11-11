@@ -39,7 +39,6 @@ const addNewWorkspace = (newWorkspace, description) => {
 
 const addNewQuicklink = (quicklinkObj, workspace) => {
     chrome.storage.sync.get(workspace, (obj) => {
-        console.log(obj);
         obj[workspace].push(quicklinkObj);
         chrome.storage.sync.set({[workspace]: obj[workspace]});
     })

@@ -12,7 +12,6 @@ function EditQuicklink(props) {
             quicklink_description: props.quicklink.quicklink_description,
         },
         onSubmit: (values) => {
-            console.log(values);
             editQuicklinkObj(props.workspace, props.quicklink.quicklink_name, values);
             props.close(false);
         }

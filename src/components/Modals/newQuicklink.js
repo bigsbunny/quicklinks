@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import { useFormik } from 'formik';
 
 import DropDown from '../dropdown';
 import  { addNewQuicklink } from '../../util/storage';
@@ -9,30 +10,23 @@ function NewQuicklinkModal(props) {
     const { toOpen, current, clean } = props;
     const [open, setOpen] = useState(toOpen);
     const [workspace, setWorkspace] = useState(current);
-    const [quicklink, setQuicklink] = useState({quicklink_name: "", quicklink_url: "", quicklink_description: ""})
 
-    // useEffect(() => {
-    //     setWorkspace(props.current)
-    // });
+    const formik = useFormik({
+        initialValues: {
+            quicklink_name: '',
+            quicklink_url: '',
+            quicklink_description: '',
+        },
+        onSubmit: (values) => {
+            addNewQuicklink(values, workspace);
+            closeModal();
+        }
+    })
 
     const closeModal = () => {
         setOpen(false);
         clean();
     }
-
-    const handleSubmit = (e) => {
-        // e.preventDefault();
-        addNewQuicklink(quicklink, workspace);
-    };
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setQuicklink( prev => ({
-            ...prev,
-            [name]: value
-        }));
-        console.log(quicklink);
-    };
 
     return (
         <Dialog open={open} onClose={closeModal} className="fixed inset-0 z-10">
@@ -50,16 +44,16 @@ function NewQuicklinkModal(props) {
                     toChange={setWorkspace}
                     options="w-full">
                 </DropDown>
-                <form className="m-4 mt-6" onSubmit={handleSubmit}>
+                <form className="m-4 mt-6" onSubmit={formik.handleSubmit}>
                     <div className="flex flex-col gap-y-4">
-                        <input type="text" name="quicklink_name" placeholder="Quicklink name" autocomplete="off"
-                            onChange={handleChange}
+                        <input type="text" id="quicklink_name" name="quicklink_name" placeholder="Quicklink name" autocomplete="off"
+                            onChange={formik.handleChange}
                             className="p-2 text-lg border border-blue-400 rounded" />
-                        <input type="text" name="quicklink_url" placeholder="URL" autocomplete="off" 
-                            onChange={handleChange}
+                        <input type="text" id="quicklink_url" name="quicklink_url" placeholder="URL" autocomplete="off" 
+                            onChange={formik.handleChange}
                             className="p-2 text-base border border-blue-400 rounded" />
-                        <input type="text" name="quicklink_description" placeholder="Quicklink Description" autocomplete="off" 
-                        onChange={handleChange}
+                        <input type="text" id="quicklink_description" name="quicklink_description" placeholder="Quicklink Description" autocomplete="off" 
+                        onChange={formik.handleChange}
                         className="p-2 text-base border border-blue-400 rounded" />
                     </div>
                     <button type="submit" name="add-workspace"

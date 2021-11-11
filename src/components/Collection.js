@@ -23,13 +23,11 @@ function Collection(props) {
     const [divRender, setDivRender] = useState('')
 
     const handleDelete = (e) => {
-        // console.log(e.target.parentNode.parentNode.id);
         const quicklink = e.target.parentNode.parentNode.id;
         deleteQuicklink(currentWorkspace, quicklink);
     }
 
     const handleQuicklinkEdit = (quicklink, e) => {
-        console.log(quicklink, e);
         setEditQuicklink(true);
         setDivRender(<EditQuicklink workspace={currentWorkspace} quicklink={quicklink} close={setEditQuicklink} />)
     };
@@ -82,9 +80,9 @@ function Collection(props) {
                                                 </p>
                                             </div>
                                             <div className="flex justify-center gap-x-2">
-                                                <button type="button" className="bg-yellow-400 rounded-md p-2"
+                                                <button type="button" className="bg-yellow-400 rounded-md p-2 text-white"
                                                     onClick={(e) => handleQuicklinkEdit(quicklink, e)}>Edit</button>
-                                                <button type="button" className="bg-red-500 rounded-md p-2" onClick={handleDelete}>Delete</button>
+                                                <button type="button" className="bg-red-500 rounded-md p-2 text-white" onClick={handleDelete}>Delete</button>
                                             </div>
                                         </div>
                                     </Disclosure.Panel>

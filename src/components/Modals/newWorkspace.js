@@ -7,7 +7,6 @@ import { workspaceCollection, addNewWorkspace } from '../../util/storage';
 function NewWorkspaceModal(props) {
 
     let { toOpen, clean } = props;
-    console.log(toOpen);
     const [open, setOpen] = useState(toOpen);
     const [workspaceName, setWorkspaceName] = useState("");
     const [workspaceDescription, setWorkspaceDescription] = useState("");
@@ -17,18 +16,29 @@ function NewWorkspaceModal(props) {
         clean();
     }
 
-    const handleNameChange = (e) => {
-        setWorkspaceName(e.target.value);
-    }
+    const formik = useFormik({
+        initialValues: {
+            workspace: '',
+            "workspace-description": ''
+        },
+        onSubmit: (values) => {
+            addWorkspace(values.workspace, values["workspace-description"]);
+            closeModal();
+        }
+    })
 
-    const handleDescriptionChange = (e) => {
-        setWorkspaceDescription(e.target.value);
-    }
+    // const handleNameChange = (e) => {
+    //     setWorkspaceName(e.target.value);
+    // }
 
-    const handleSubmit = (e) => {
-        // e.preventDefault();
-        addWorkspace(workspaceName, workspaceDescription);
-    }
+    // const handleDescriptionChange = (e) => {
+    //     setWorkspaceDescription(e.target.value);
+    // }
+
+    // const handleSubmit = (e) => {
+    //     // e.preventDefault();
+    //     addWorkspace(workspaceName, workspaceDescription);
+    // }
 
     const addWorkspace = (workspaceName, workspaceDescription) => {
         workspaceCollection(workspaceName);
@@ -45,13 +55,13 @@ function NewWorkspaceModal(props) {
                         Create a new workspace to manage your quicklinks.
                     </Dialog.Description>
                     <div className="m-4 mt-6">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={formik.handleSubmit}>
                             <div className="flex flex-col gap-y-4 text-black" >
-                                <input type="text" name="workspace" placeholder="Workspace name" autocomplete="off" 
-                                    onChange={handleNameChange}
+                                <input type="text" id="workspace" name="workspace" placeholder="Workspace name" autocomplete="off" 
+                                    onChange={formik.handleChange}
                                     className="p-2 text-lg border-2 border-blue-400 rounded" />
-                                <input type="text" name="workspace-description" placeholder="Workspace description" autocomplete="off" 
-                                    onChange={handleDescriptionChange}
+                                <input type="text" id="workspace-description" name="workspace-description" placeholder="Workspace description" autocomplete="off" 
+                                    onChange={formik.handleChange}
                                     className="p-2 text-md border-2 border-blue-400 rounded" />
                             </div>
                             <button type="submit" name="add-workspace" 

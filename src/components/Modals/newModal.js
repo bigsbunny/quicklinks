@@ -25,7 +25,6 @@ function MainModal(props) {
 
     const handleModal = (e) => {
         e.preventDefault();
-        console.log(e.target.value);
         if(e.target.value === "new-workspace") {
              setModal(<NewWorkspaceModal toOpen={true} close={closeWorkspaceModal} clean={resetModal} />);
         } else {
