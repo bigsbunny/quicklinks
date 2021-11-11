@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     if (details.reason === chrome.runtime.OnInstalledReason.INSTALL || details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
         chrome.tabs.create({
             active: true,
-            url: "https://github.com/bigsbunny"
+            url: "https://quicklinks-install.netlify.app/"
         })
     }
     initStorage();
