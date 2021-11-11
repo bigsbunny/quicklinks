@@ -13,7 +13,7 @@ function Options() {
   const [current, setCurrent] = useState("")
 
   return (
-    <div>
+    <div style={{marginBottom: "50px"}}>
       <h1 className="text-center text-3xl my-4">QuickLinks Configuration</h1>
       <div className="w-1/2 mx-auto flex flex-row justify-center items-start gap-x-2">
         <div className="w-3/4 flex-shrink-0 relative">
