@@ -5,7 +5,7 @@ import './App.css';
 import { useStateWithCallbackInstant } from 'use-state-with-callback';
 import DropDown from './components/dropdown';
 import { openOptionsPage } from './util/runtime';
-import { initStorage, fetchWorkspaceQuicklinks } from './util/storage';
+import { initStorage, fetchWorkspaceQuicklinks, getPopupLastWorkspace, setPopupLastWorkspace } from './util/storage';
 import { openURLAsTab } from './util/tabs';
 
 function App() {
@@ -19,6 +19,16 @@ function App() {
       })
     }
   })
+
+  useEffect(() => {
+    getPopupLastWorkspace().then((response) => {
+      setCurrent(response);
+    })
+  }, []);
+
+  useEffect(() => {
+    setPopupLastWorkspace(current);
+  }, [current]);
 
   return (
     <div className="popup-dimensions p-2 mx-auto">

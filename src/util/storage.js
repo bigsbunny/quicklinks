@@ -5,6 +5,8 @@ const initStorage = () => {
         if(Object.keys(result).length === 0)
             chrome.storage.sync.set({workspaces: []});
     })
+
+    chrome.storage.sync.set({popupLastWorkspace: ''});
 };
 
 // const initStorage = async () => {
@@ -39,6 +41,7 @@ const addNewWorkspace = (newWorkspace, description) => {
 
 const addNewQuicklink = (quicklinkObj, workspace) => {
     chrome.storage.sync.get(workspace, (obj) => {
+        console.log(obj);
         obj[workspace].push(quicklinkObj);
         chrome.storage.sync.set({[workspace]: obj[workspace]});
     })
@@ -85,6 +88,21 @@ const editQuicklinkObj = (workspace, quicklinkName, newQuicklink) => {
     });
 }
 
+const setPopupLastWorkspace = (workspace) => {
+    chrome.storage.sync.set({popupLastWorkspace: workspace});
+}
+
+const getPopupLastWorkspace = async () => {
+    let a = new Promise((resolve, reject) => {
+        chrome.storage.sync.get('popupLastWorkspace', (item) => {
+            resolve(item);
+        });
+    });
+
+    const lastWorkspace = await a;
+    return lastWorkspace.popupLastWorkspace;
+}
+
 export { initStorage, 
     workspaceCollection,
     addNewWorkspace, 
@@ -92,4 +110,6 @@ export { initStorage,
     fetchWorkspace, 
     fetchWorkspaceQuicklinks, 
     deleteQuicklink,
-    editQuicklinkObj } ;
+    editQuicklinkObj,
+    setPopupLastWorkspace,
+    getPopupLastWorkspace } ;
