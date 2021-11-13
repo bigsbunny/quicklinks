@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Dialog } from '@headlessui/react';
 import { useStateWithCallbackInstant } from 'use-state-with-callback';
+import ReactTooltip from 'react-tooltip';
 
 import { fetchWorkspaceQuicklinks, deleteQuicklink } from '../util/storage';
 
@@ -81,8 +82,13 @@ function Collection(props) {
                                             </div>
                                             <div className="flex justify-center gap-x-2">
                                                 <button type="button" className="bg-yellow-400 rounded-md p-2 text-white"
-                                                    onClick={(e) => handleQuicklinkEdit(quicklink, e)}>Edit</button>
-                                                <button type="button" className="bg-red-500 rounded-md p-2 text-white" onClick={handleDelete}>Delete</button>
+                                                    onClick={(e) => handleQuicklinkEdit(quicklink, e)}
+                                                    data-tip="Edit Quicklink">Edit</button>
+                                                <ReactTooltip effect="solid" />
+                                                <button type="button" className="bg-red-500 rounded-md p-2 text-white" 
+                                                    onClick={handleDelete}
+                                                    data-tip="Delete Quicklink">Delete</button>
+                                                <ReactTooltip effect="solid" />
                                             </div>
                                         </div>
                                     </Disclosure.Panel>
